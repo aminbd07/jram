@@ -1,0 +1,6 @@
+.bgHero{
+    background-image: url("../images/hero_bg.png");
+    background-size: cover;
+    object-fit: cover;
+    
+}

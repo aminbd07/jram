@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-28004510.a0dc8e8",
+    "@nuxtjs/google-analytics": "^2.4.0",
+    "@nuxtjs/supabase": "^0.3.1",
+    "@nuxtjs/tailwindcss": "^6.6.1",
+    "nuxt": "^3.3.1",
+    "nuxt-icon": "^0.3.3",
+    "vue-draggable-next": "^2.1.1"
+  },
+  "dependencies": {
+    "@nuxt/image": "^0.7.1",
+    "@nuxtjs/gtm": "^2.4.0",
+    "@pinia/nuxt": "^0.4.8",
+    "next-qrcode": "^2.4.1",
+    "nuxt-owl-carousel": "^0.0.3",
+    "nuxt-swiper": "^1.0.1",
+    "pinia": "^2.0.34",
+    "sweetalert2": "^11.7.3",
+    "swiper": "^9.1.1",
+    "vue-social-sharing": "^3.0.9",
+    "vue-sweetalert2": "^5.0.5",
+    "vuedraggable": "^4.1.0"
+  }
+}
