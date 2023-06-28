@@ -1,6 +1,15 @@
+body{
+    font-size: 20px;
+}
+
 .bgHero{
     background-image: url("../images/hero_bg.png");
     background-size: cover;
-    object-fit: cover;
+    object-fit: stretch;
+    background-repeat: no-repeat;
     
+}
+
+.container{
+     
 }

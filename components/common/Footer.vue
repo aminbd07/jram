@@ -1,5 +1,5 @@
 <template>
-    <footer class="p-6 bg-gradient-to-r from-[#218454] to-[#51a951] w-[100%]">
+    <footer class="bg-gradient-to-r from-[#218454] to-[#51a951] ">
         <div class="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-3 items-center">
             <div class="flex flex-col space-y-4">
                 <h2 class="font-medium text-[40px]">যোগাযোগ</h2>
