@@ -11,10 +11,11 @@
 
           <li> রেজিষ্ট্রেশনের পূর্বে উল্লেখিত মাধ্যমগুলোতে টিকেটের মূল্য পরিশোধ করুন।</li>
 
-          <li> সাবেক শিক্ষার্থীদের জন্য প্রতি টিকেটের মূল্য ১০০০$ এবং বর্তমান শিক্ষার্থীদের জন্য ৫০০$ নির্ধারন করা হয়েছে।
+          <li> সাবেক শিক্ষার্থীদের জন্য প্রতি টিকেটের মূল্য ১০০০ টাকা এবং বর্তমান শিক্ষার্থীদের জন্য ৫০০ টাকা নির্ধারন করা
+            হয়েছে।
           </li>
 
-          <li> প্রতি ফ্যামিলি টিকেটের মূল্য ৫০০$ নির্ধারন করা হয়েছে।</li>
+          <li> প্রতি ফ্যামিলি টিকেটের মূল্য ৫০০ টাকা নির্ধারন করা হয়েছে।</li>
         </ol>
 
 
@@ -32,23 +33,23 @@
 
       </div>
       <div class="p-4 md:w-2/3 xs:w-full">
-
+        <form @submit.prevent="signUp">
         <div class="md:flex mb-4">
           <div class="md:shrink-0 w-1/4">
-            <label class=""> পরিচয়ের ধরন </label>
+            <label class=""> পরিচয়ের ধরন <span class="text-red">*</span> </label>
           </div>
           <div class=" w-3/4">
-            <label> <input type="checkbox" /> সাবেক শিক্ষার্থী  </label>
-            <label> <input type="checkbox" /> বর্তমান শিক্ষার্থী  </label>
+            <label> <input type="radio" v-model="studentType" value="old" name="student-type" /> সাবেক শিক্ষার্থী </label>
+            <label> <input type="radio" v-model="studentType" value="new" name="student-type"  /> বর্তমান শিক্ষার্থী </label>
           </div>
         </div>
 
         <div class="md:flex mb-4">
           <div class="md:shrink-0 w-1/4">
-            <label class=""> নাম </label>
+            <label class=""> নাম <span class="text-red">*</span> </label>
           </div>
           <div class=" w-3/4">
-            <input type="text"
+            <input type="text" v-model="name"
               class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
           </div>
         </div>
@@ -58,7 +59,7 @@
             <label class=""> দাখিল ব্যাচ </label>
           </div>
           <div class=" w-3/4">
-            <input type="text"
+            <input type="text" v-model="batch"
               class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
           </div>
         </div>
@@ -68,8 +69,8 @@
             <label class=""> ঠিকানা </label>
           </div>
           <div class=" w-3/4">
-            <textarea  
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" > </textarea>
+            <textarea v-model="address"
+              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"> </textarea>
           </div>
         </div>
 
@@ -78,64 +79,93 @@
             <label class=""> মোবাইল নাম্বার </label>
           </div>
           <div class=" w-3/4">
-            <input type="text"
+            <input type="text" v-model="mobile"
+              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+          </div>
+        </div>
+
+        <div class="md:flex mb-4">
+          <div class="md:shrink-0 w-1/4">
+            <label class=""> ইমেইল</label>
+          </div>
+          <div class=" w-3/4">
+            <input type="text" v-model="email"
+              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+          </div>
+        </div>
+
+        <div class="md:flex mb-4">
+          <div class="md:shrink-0 w-1/4">
+            <label class=""> লিঙ্গ </label>
+          </div>
+          <div class=" w-3/4">
+            <label> <input type="radio" v-model="gender" value="male" name="gender" /> পুরুষ </label>
+            <label> <input type="radio" v-model="gender" value="female" name="gender"  /> নারী </label>
+          </div>
+        </div>
+
+        <div class="md:flex mb-4">
+          <div class="md:shrink-0 w-1/4">
+            <label class=""> টিকেট সংখ্যা </label>
+          </div>
+          <div class=" w-3/4">
+            <input type="number" v-model="mainTicket" @blur="calulateTotal"
+              class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            (জনপ্রতি ১০০০ টাকা)
+          </div>
+        </div>
+        <div class="md:flex mb-4">
+          <div class="md:shrink-0 w-1/4">
+            <label class=""> ফ্যামিলি টিকেট সংখ্যা </label>
+          </div>
+          <div class=" w-3/4">
+            <input type="number" v-model="familyTicket" @blur="calulateTotal"
+              class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            (জনপ্রতি ৫০০ টাকা)
+          </div>
+        </div>
+
+        <div class=" bg-red-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 " v-if="totalPrice">
+          
+            আপনার টিকিটের মোট মূল্য {{ totalPrice }} টাকা
+         
+        </div>
+
+        <div class="md:flex mb-4">
+          <div class="md:shrink-0 w-1/4">
+            <label class=""> টাকা দেওয়ার মাধ্যম</label>
+          </div>
+          <div class=" w-3/4">
+
+            <label> <input type="radio" v-model="paymentMethod" value="bkash" name="payment-method"  /> বিকাশ </label>
+            <label> <input type="radio" v-model="paymentMethod" value="nagad" name="payment-method" /> নগদ </label>
+            <label> <input type="radio" v-model="paymentMethod" value="roket" name="payment-method" /> রকেট </label>
+            <label> <input type="radio" v-model="paymentMethod" value="bank" name="payment-method" /> ব্যাংক একাউন্ট </label>
+          </div>
+        </div>
+        <div class="md:flex mb-4">
+          <div class="md:shrink-0 w-1/4">
+            <label class="">ট্রানজেকশন নাম্বার </label>
+          </div>
+          <div class=" w-3/4">
+            <input type="text" v-model="transID"
               class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
           </div>
         </div>
         <div class="md:flex mb-4">
           <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
+            <label class=""> ছবি আপলোড দিন</label>
           </div>
           <div class=" w-3/4">
-            <input type="text"
+            <input type="file"
               class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
           </div>
         </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="text"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
+
+        <div class="items-center">
+          <input type="submit" name="submit" value="রেজিস্ট্রেশন কনফার্ম করুন" class="bg-[#027554]  hover:bg-[#027554]  text-white font-bold py-2 px-4 rounded"/>
         </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="text"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="text"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="text"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="text"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
+        </form>
 
       </div>
 
@@ -151,12 +181,19 @@ definePageMeta({
 useHead({
   title: 'Register | supaAuth'
 })
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
+const studentType = ref('old')
 const name = ref('')
-const lastname = ref('')
-const company = ref('')
+const email = ref('')
+const batch = ref('')
+const address = ref('')
+const mobile = ref('')
+const gender = ref('')
+const mainTicket = ref(0)
+const familyTicket = ref(0)
+const paymentMethod = ref('')
+const transID = ref('')
+const totalPrice = ref(0)
+
 const client = useSupabaseAuthClient()
 const user = useSupabaseUser()
 const loading = ref(false)
@@ -169,25 +206,32 @@ watchEffect(async () => {
   }
 });
 
+const calulateTotal = async () => {
+
+  let ptp = 1000;
+  let ftp = 500;
+  let total = (ptp * mainTicket.value) + (ftp * familyTicket.value);
+  totalPrice.value = total;
+
+}
 const signUp = async () => {
 
-  return;
 
   let validation = [];
   let vr = false
+  if (!studentType.value) {
+    validation.push(' পরিচয়ের ধরন দিন');
+    vr = true;
+  }
   if (!name.value) {
-    validation.push('First name required');
+    validation.push(' নাম দিন' );
     vr = true;
   }
-  if (!lastname.value) {
-    validation.push('Last name required');
+  if (!batch.value) {
+    validation.push(' দাখিল ব্যাচ দিন');
     vr = true;
   }
-  console.log(password, '-', confirmPassword)
-  if (password.value !== confirmPassword.value) {
-    validation.push("Passwords do not match");
-    vr = true;
-  }
+   
   if (vr) {
     swal.fire({
       title: "Validation Error",
@@ -243,5 +287,8 @@ const clearError = () => {
   background-size: cover;
   object-fit: stretch;
   background-repeat: no-repeat;
+}
+.text-red{
+  color: red;;
 }
 </style>
