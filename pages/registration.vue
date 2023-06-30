@@ -21,7 +21,7 @@
 
         <p class="mt-4 mb-4">
           মোবাইল ব্যাংকিং নাম্বার <br />
-          ০১৮২৪ ০০০৫৭৮
+          {{ mfsNumber }}
         </p>
 
         <p>
@@ -39,9 +39,9 @@
               <label class=""> পরিচয়ের ধরন <span class="text-red">*</span> </label>
             </div>
             <div class=" w-3/4">
-              <label> <input type="radio" v-model="studentType" value="old" name="student-type" /> সাবেক শিক্ষার্থী
+              <label> <input type="radio" v-model="studentType" value="old" name="student-type" @change="updateType" /> সাবেক শিক্ষার্থী
               </label>
-              <label> <input type="radio" v-model="studentType" value="new" name="student-type" /> বর্তমান শিক্ষার্থী
+              <label> <input type="radio" v-model="studentType" value="new" name="student-type" @change="updateType" /> বর্তমান শিক্ষার্থী
               </label>
             </div>
           </div>
@@ -58,7 +58,7 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label class=""> দাখিল ব্যাচ </label>
+              <label class="" v-html="studentType=='old'? 'দাখিল ব্যাচ' : 'শ্রেণী' "></label>
             </div>
             <div class=" w-3/4">
               <input type="text" v-model="batch"
@@ -113,7 +113,7 @@
             <div class=" w-3/4">
               <input type="number" v-model="mainTicket" @change="calulateTotal"
                 class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-              (জনপ্রতি ১০০০ টাকা)
+              (জনপ্রতি {{ tikcketFee }} টাকা)
             </div>
           </div>
           <div class="md:flex mb-4">
@@ -123,7 +123,7 @@
             <div class=" w-3/4">
               <input type="number" v-model="familyTicket" @change="calulateTotal"
                 class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-              (জনপ্রতি ৫০০ টাকা)
+              (জনপ্রতি 500 টাকা)
             </div>
           </div>
 
@@ -150,19 +150,22 @@
 
           <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
             v-if="paymentMethod && paymentMethod == 'bkash'">
-            bokase ki babea taka diben
+            এই  ({{ mfsNumber }}) নম্বর এ বিকাশ করুন, এর পর ট্রান্সেকশন নং তা নিচে এন্ট্রি দিন. <br/>
+            (অন্য নম্বর থেকে করলে রেফারেন্স এ আপনার নাম্বার দিন.)
           </div>
           <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
             v-if="paymentMethod && paymentMethod == 'nagad'">
-            Nagad ki babea taka diben
+            এই  ({{ mfsNumber }}) নম্বর এ নগদ করুন, এর পর ট্রান্সেকশন নং তা নিচে এন্ট্রি দিন. <br/>
+            (অন্য নম্বর থেকে করলে রেফারেন্স এ আপনার নাম্বার দিন.)
           </div>
           <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
             v-if="paymentMethod && paymentMethod == 'roket'">
-            roket ki babea taka diben
+            এই  ({{ mfsNumber }}) নম্বর এ রকেট করুন, এর পর ট্রান্সেকশন নং তা নিচে এন্ট্রি দিন. <br/>
+            (অন্য নম্বর থেকে করলে রেফারেন্স এ আপনার নাম্বার দিন.)
           </div>
           <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
             v-if="paymentMethod && paymentMethod == 'bank'">
-            bank ki babea taka diben
+            পাশে দেওয়া একাউন্ট এ ডিপোজিট কিংবা ট্রান্সফার করুন. সেটার ট্রান্সেকশন নম্বর নিচে দিন.
           </div>
 
           <div class="md:flex mb-4">
@@ -204,7 +207,7 @@ definePageMeta({
 useHead({
   title: 'Register | supaAuth'
 })
-const studentType = ref('old')
+const studentType = ref('')
 const name = ref('')
 const email = ref('')
 const batch = ref('')
@@ -216,6 +219,9 @@ const mainTicket = ref(0)
 const familyTicket = ref(0)
 const paymentMethod = ref('')
 const transID = ref('')
+const BankInfo = ref('')
+const mfsNumber = ref('01710000000')
+const tikcketFee = ref(1000)
 const totalPrice = ref(0)
 
 const client = useSupabaseAuthClient()
@@ -230,9 +236,19 @@ watchEffect(async () => {
   }
 });
 
+
+const updateType = async () => {
+  
+  if(studentType.value == 'new'){
+    tikcketFee.value = 500; 
+  }else{
+    tikcketFee.value = 1000; 
+  }
+  calulateTotal();
+}
 const calulateTotal = async () => {
 
-  let ptp = 1000;
+  let ptp = tikcketFee.value ;
   let ftp = 500;
   let total = (ptp * mainTicket.value) + (ftp * familyTicket.value);
   totalPrice.value = total;
