@@ -14,7 +14,7 @@
                 <div class="flex flex-col space-y-2 text-sm dark:text-white-400">
                     <p> +880 123 456 789</p>
                     <p>+880 123 456 789</p>
-                    <p>info@jram100years.com</p>
+                    <p>100year@xstudentsjram.com</p>
                 </div>
             </div>
 
