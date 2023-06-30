@@ -1,11 +1,13 @@
 <template>
   <div class="bg-white border-gray-200 dark:bg-wihte-900">
     <div class="container mx-auto p-4">
-      <nav class=" ">
+      <nav class="">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between">
-          <a href="/" class="flex items-center">
-            <img src="~/assets/images/logo.png" class="h-20 mr-3" alt="Logo" />
+          <a href="/" class="flex items-center text-center">
+            <img src="~/assets/images/logo.png" class="h-20 mr-4" alt="Logo" />
+            <h2 class="text-[24px]">জয়াগ রশিদিয়া আলিম মাদ্রাসা </h2>
           </a>
+          
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul
               class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-white-800 md:dark:bg-white-900 dark:border-gray-700">
