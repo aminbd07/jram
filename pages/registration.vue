@@ -179,7 +179,7 @@
               <label class=""> ছবি আপলোড দিন</label>
             </div>
             <div class=" w-3/4">
-              <input type="file"
+              <input type="file" @change="imageUpdate"
                 class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
@@ -211,6 +211,7 @@ const batch = ref('')
 const address = ref('')
 const mobile = ref('')
 const gender = ref('')
+const file_name = ref('')
 const mainTicket = ref(0)
 const familyTicket = ref(0)
 const paymentMethod = ref('')
@@ -288,7 +289,7 @@ const signUp = async () => {
 
   const ue = await checkUrlExit(mobile.value);
   console.log(ue)
- 
+
   if (ue) {
     swal.fire({
       title: "মোবাইল নম্বর টি নিবন্ধিত",
@@ -311,7 +312,9 @@ const signUp = async () => {
       "main_ticket": mainTicket.value,
       "family_ticket": familyTicket.value,
       "payment_method": paymentMethod.value,
-      "tranx_id": transID.value
+      "tranx_id": transID.value,
+      "image" : file_name.value,
+      "paid_amount" : totalPrice.value
     }
 
     const { data, error } = await client
@@ -359,7 +362,7 @@ async function sendSMS(mobile) {
   let msg = "Your Registration is success for JRAM 100 year program";
   let APIKEY = "C20076335fef723964a9d7.42340865"
   let SENDERID = "8809612446650";
-  let url = "https://880sms.com/smsapi?api_key="+APIKEY+"&type=text&contacts="+mobile+"&senderid="+SENDERID+"&msg="+msg
+  let url = "https://880sms.com/smsapi?api_key=" + APIKEY + "&type=text&contacts=" + mobile + "&senderid=" + SENDERID + "&msg=" + msg
   await fetch(url);
 }
 
@@ -380,6 +383,71 @@ async function checkUrlExit(mobile) {
   if (error) {
     return true;
   }
+}
+function imageUpdate(event) {
+  const file = event.target.files[0]
+  console.log(file);
+  let ext = file.name.substr(file.name.lastIndexOf('.') + 1, file.length);
+  let r = Date.now();
+  console.log(r) ; 
+  let file_name = "/user/" + r +"_"+ file.name
+
+  let valied = checkFile(file.size, 300, ext);
+  if (valied && file) {
+    let data = {
+      act: 'profile_image',
+      file: file,
+      file_name: file_name
+    }
+
+    uploadImage(data)
+
+  }
+}
+
+
+// Save image 
+async function uploadImage(data): Promise<string> {
+  console.log(data) 
+  let field = data.act
+  if (field == 'profile_image') {
+    const { success, error } = await client.storage.from('jram').upload(data.file_name, data.file, { upsert: true })
+    if (error) {
+      throw new Error(error.message)
+    }
+    file_name.value = data.file_name
+  }
+  // swal.fire({
+  //   title: "Success!",
+  //   text: "Image update success!",
+  //   icon: "success"
+  // })
+  return true
+}
+
+
+
+function checkFile(size, allowSize, ext) {
+  var allowedExtensions = ['png', 'jpg', 'jpeg', 'gif', 'webp']
+  if (!allowedExtensions.includes(ext)) {
+    swal.fire({
+      title: "Invalid!",
+      text: "Invalid file type. Only JPG, JPEG, PNG and GIF files are allowed.!",
+      icon: "error"
+    })
+    return false;
+  }
+  let fsize = (size / 1000);
+  console.log(size, "-", fsize, "-", allowSize)
+  if (fsize > allowSize) { // check 150KB 
+    swal.fire({
+      title: "Invalid!",
+      text: "Invalid file size, max size " + allowSize + "KB",
+      icon: "error"
+    })
+    return false;
+  }
+  return true;
 }
 
 </script>
