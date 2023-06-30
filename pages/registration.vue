@@ -359,7 +359,7 @@ const signUp = async () => {
       swal.fire({
         title: "Registration Success!",
         icon: 'success',
-        text: 'আপনার নিবন্ধন আবেদন গৃহীত হয়েছে. আমরা শীঘ্রই আপনাকে নিশ্চিত করা হবে',
+        text: 'আপনার নিবন্ধন আবেদন গৃহীত হয়েছে. শীঘ্রই আপনাকে নিশ্চিত করা হবে',
         confirmButtonColor: 'green',
         showCancelButton: false
       }).then((result) => {
