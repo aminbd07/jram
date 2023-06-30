@@ -34,11 +34,12 @@
       </div>
       <div class="p-4 md:w-2/3 xs:w-full">
         <form @submit.prevent="signUp">
-          <div class="md:flex mb-4">
-            <div class="md:shrink-0 w-1/4">
-              <label class=""> পরিচয়ের ধরন <span class="text-red">*</span> </label>
+          <div class="md:flex mb-4 ">
+            <div class="md:shrink-0  lg:w-1/4 xs:w-full">
+              <label class=""> পরিচয়ের ধরন <span class="text-red">*</span></label>
             </div>
-            <div class=" w-3/4">
+
+            <div class=" w-3/4 xs:w-full">
               <label> <input type="radio" v-model="studentType" value="old" name="student-type" @change="updateType" /> সাবেক শিক্ষার্থী
               </label>
               <label> <input type="radio" v-model="studentType" value="new" name="student-type" @change="updateType" /> বর্তমান শিক্ষার্থী
@@ -113,7 +114,7 @@
             <div class=" w-3/4">
               <input type="number" v-model="mainTicket" @change="calulateTotal"
                 class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-              (জনপ্রতি {{ tikcketFee }} টাকা)
+             <div>  (জনপ্রতি {{ tikcketFee }} টাকা)</div>
             </div>
           </div>
           <div class="md:flex mb-4">
@@ -123,7 +124,7 @@
             <div class=" w-3/4">
               <input type="number" v-model="familyTicket" @change="calulateTotal"
                 class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-              (জনপ্রতি 500 টাকা)
+              <div> (জনপ্রতি 500 টাকা)</div>
             </div>
           </div>
 
