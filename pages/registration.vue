@@ -34,137 +34,160 @@
       </div>
       <div class="p-4 md:w-2/3 xs:w-full">
         <form @submit.prevent="signUp">
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> পরিচয়ের ধরন <span class="text-red">*</span> </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 w-1/4">
+              <label class=""> পরিচয়ের ধরন <span class="text-red">*</span> </label>
+            </div>
+            <div class=" w-3/4">
+              <label> <input type="radio" v-model="studentType" value="old" name="student-type" /> সাবেক শিক্ষার্থী
+              </label>
+              <label> <input type="radio" v-model="studentType" value="new" name="student-type" /> বর্তমান শিক্ষার্থী
+              </label>
+            </div>
           </div>
-          <div class=" w-3/4">
-            <label> <input type="radio" v-model="studentType" value="old" name="student-type" /> সাবেক শিক্ষার্থী </label>
-            <label> <input type="radio" v-model="studentType" value="new" name="student-type"  /> বর্তমান শিক্ষার্থী </label>
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> নাম <span class="text-red">*</span> </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 w-1/4">
+              <label class=""> নাম <span class="text-red">*</span> </label>
+            </div>
+            <div class=" w-3/4">
+              <input type="text" v-model="name"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            </div>
           </div>
-          <div class=" w-3/4">
-            <input type="text" v-model="name"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> দাখিল ব্যাচ </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 w-1/4">
+              <label class=""> দাখিল ব্যাচ </label>
+            </div>
+            <div class=" w-3/4">
+              <input type="text" v-model="batch"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            </div>
           </div>
-          <div class=" w-3/4">
-            <input type="text" v-model="batch"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> ঠিকানা </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 w-1/4">
+              <label class=""> ঠিকানা </label>
+            </div>
+            <div class=" w-3/4">
+              <textarea v-model="address"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"> </textarea>
+            </div>
           </div>
-          <div class=" w-3/4">
-            <textarea v-model="address"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"> </textarea>
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> মোবাইল নাম্বার </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 lg:w-1/4 xs:w-full">
+              <label class=""> মোবাইল নাম্বার </label>
+            </div>
+            <div class=" w-3/4">
+              <input type="text" v-model="mobile"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            </div>
           </div>
-          <div class=" w-3/4">
-            <input type="text" v-model="mobile"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> ইমেইল</label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 w-1/4">
+              <label class=""> ইমেইল</label>
+            </div>
+            <div class=" w-3/4">
+              <input type="text" v-model="email"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            </div>
           </div>
-          <div class=" w-3/4">
-            <input type="text" v-model="email"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> লিঙ্গ </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 w-1/4">
+              <label class=""> লিঙ্গ </label>
+            </div>
+            <div class=" w-3/4">
+              <label> <input type="radio" v-model="gender" value="male" name="gender" /> পুরুষ </label>
+              <label> <input type="radio" v-model="gender" value="female" name="gender" /> নারী </label>
+            </div>
           </div>
-          <div class=" w-3/4">
-            <label> <input type="radio" v-model="gender" value="male" name="gender" /> পুরুষ </label>
-            <label> <input type="radio" v-model="gender" value="female" name="gender"  /> নারী </label>
-          </div>
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> টিকেট সংখ্যা </label>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0  lg:w-1/4 xs:w-full">
+              <label class=""> টিকেট সংখ্যা </label>
+            </div>
+            <div class=" w-3/4">
+              <input type="number" v-model="mainTicket" @change="calulateTotal"
+                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+              (জনপ্রতি ১০০০ টাকা)
+            </div>
           </div>
-          <div class=" w-3/4">
-            <input type="number" v-model="mainTicket" @blur="calulateTotal"
-              class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-            (জনপ্রতি ১০০০ টাকা)
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0  lg:w-1/4 xs:w-full">
+              <label class=""> ফ্যামিলি টিকেট সংখ্যা </label>
+            </div>
+            <div class=" w-3/4">
+              <input type="number" v-model="familyTicket" @change="calulateTotal"
+                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+              (জনপ্রতি ৫০০ টাকা)
+            </div>
           </div>
-        </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> ফ্যামিলি টিকেট সংখ্যা </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="number" v-model="familyTicket" @blur="calulateTotal"
-              class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-            (জনপ্রতি ৫০০ টাকা)
-          </div>
-        </div>
 
-        <div class=" bg-red-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 " v-if="totalPrice">
-          
+          <div class=" bg-red-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
+            v-if="totalPrice">
+
             আপনার টিকিটের মোট মূল্য {{ totalPrice }} টাকা
-         
-        </div>
 
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> টাকা দেওয়ার মাধ্যম</label>
           </div>
-          <div class=" w-3/4">
 
-            <label> <input type="radio" v-model="paymentMethod" value="bkash" name="payment-method"  /> বিকাশ </label>
-            <label> <input type="radio" v-model="paymentMethod" value="nagad" name="payment-method" /> নগদ </label>
-            <label> <input type="radio" v-model="paymentMethod" value="roket" name="payment-method" /> রকেট </label>
-            <label> <input type="radio" v-model="paymentMethod" value="bank" name="payment-method" /> ব্যাংক একাউন্ট </label>
-          </div>
-        </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class="">ট্রানজেকশন নাম্বার </label>
-          </div>
-          <div class=" w-3/4">
-            <input type="text" v-model="transID"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
-        <div class="md:flex mb-4">
-          <div class="md:shrink-0 w-1/4">
-            <label class=""> ছবি আপলোড দিন</label>
-          </div>
-          <div class=" w-3/4">
-            <input type="file"
-              class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-          </div>
-        </div>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0  lg:w-1/4 xs:w-full">
+              <label class=""> টাকা দেওয়ার মাধ্যম</label>
+            </div>
+            <div class=" w-3/4">
 
-        <div class="items-center">
-          <input type="submit" name="submit" value="রেজিস্ট্রেশন কনফার্ম করুন" class="bg-[#027554]  hover:bg-[#027554]  text-white font-bold py-2 px-4 rounded"/>
-        </div>
+              <label> <input type="radio" v-model="paymentMethod" value="bkash" name="payment-method" /> বিকাশ </label>
+              <label> <input type="radio" v-model="paymentMethod" value="nagad" name="payment-method" /> নগদ </label>
+              <label> <input type="radio" v-model="paymentMethod" value="roket" name="payment-method" /> রকেট </label>
+              <label> <input type="radio" v-model="paymentMethod" value="bank" name="payment-method" /> ব্যাংক একাউন্ট
+              </label>
+            </div>
+          </div>
+
+          <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
+            v-if="paymentMethod && paymentMethod == 'bkash'">
+            bokase ki babea taka diben
+          </div>
+          <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
+            v-if="paymentMethod && paymentMethod == 'nagad'">
+            Nagad ki babea taka diben
+          </div>
+          <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
+            v-if="paymentMethod && paymentMethod == 'roket'">
+            roket ki babea taka diben
+          </div>
+          <div class=" bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000 "
+            v-if="paymentMethod && paymentMethod == 'bank'">
+            bank ki babea taka diben
+          </div>
+
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0  lg:w-1/4 xs:w-full">
+              <label class="">ট্রানজেকশন নাম্বার </label>
+            </div>
+            <div class=" w-3/4">
+              <input type="text" v-model="transID"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            </div>
+          </div>
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0  lg:w-1/4 xs:w-full">
+              <label class=""> ছবি আপলোড দিন</label>
+            </div>
+            <div class=" w-3/4">
+              <input type="file"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+            </div>
+          </div>
+
+          <div class="items-center">
+            <input type="submit" name="submit" value="রেজিস্ট্রেশন কনফার্ম করুন"
+              class="bg-[#027554]  hover:bg-[#027554]  text-white font-bold py-2 px-4 rounded" />
+          </div>
         </form>
 
       </div>
@@ -224,14 +247,35 @@ const signUp = async () => {
     vr = true;
   }
   if (!name.value) {
-    validation.push(' নাম দিন' );
+    validation.push(' নাম দিন');
     vr = true;
   }
   if (!batch.value) {
     validation.push(' দাখিল ব্যাচ দিন');
     vr = true;
   }
-   
+  if (!address.value) {
+    validation.push(' ঠিকানা দিন');
+    vr = true;
+  }
+  if (!mobile.value) {
+    validation.push(' মোবাইল নাম্বার দিন');
+    vr = true;
+  }
+  if (!mainTicket.value) {
+    validation.push('  টিকেট সংখ্যা দিন');
+    vr = true;
+  }
+  if (!paymentMethod.value) {
+    validation.push(' টাকা দেওয়ার মাধ্যম  দিন');
+    vr = true;
+  }
+
+  if (!transID.value) {
+    validation.push(' ট্রানজেকশন নাম্বার  দিন');
+    vr = true;
+  }
+
   if (vr) {
     swal.fire({
       title: "Validation Error",
@@ -241,44 +285,103 @@ const signUp = async () => {
     });
     return;
   }
-  loading.value = true
-  const { error } = await client.auth.signUp({
-    email: email.value,
-    password: password.value,
-    options: {
-      data: {
-        first_name: name.value,
-        last_name: lastname.value,
-        company: company.value
-      }
-    }
-  })
-  if (error) {
 
-    loading.value = false
-    authError.value = 'Failed to fetch'
+  const ue = await checkUrlExit(mobile.value);
+  console.log(ue)
+ 
+  if (ue) {
     swal.fire({
-      title: "Registration Faild!",
-      icon: 'error',
-      text: 'Your registartion not completed, please try again.',
-      confirmButtonColor: 'red',
-      showCancelButton: false
+      title: "মোবাইল নম্বর টি নিবন্ধিত",
+      text: "এই মোবাইল নম্বর টি নিবন্ধিত, অন্য একটা নম্বর দিয়ে চেষ্টা করুন অথবা আমাদের সাথে যোগাযোগ করুন.",
+      icon: 'error'
     })
   } else {
-    swal.fire({
-      title: "Registration Success!",
-      icon: 'success',
-      text: 'Your registartion is complete, please check your inbox for confirm your account.',
-      confirmButtonColor: 'green',
-      showCancelButton: false
-    }).then((result) => {
-      window.location.href = "/"
-    })
+
+
+    loading.value = true
+
+    let saveData = {
+      'student_type': studentType.value,
+      'name': name.value,
+      'batch': batch.value,
+      "address": address.value,
+      "phone": mobile.value,
+      "email": email.value,
+      "gender": gender.value,
+      "main_ticket": mainTicket.value,
+      "family_ticket": familyTicket.value,
+      "payment_method": paymentMethod.value,
+      "tranx_id": transID.value
+    }
+
+    const { data, error } = await client
+      .from('event_registration')
+      .insert([
+        saveData
+      ])
+      .select()
+
+
+
+
+    if (error) {
+
+      loading.value = false
+      authError.value = 'Failed to fetch'
+      swal.fire({
+        title: "Registration Faild!",
+        icon: 'error',
+        text: 'একটা সমস্যা হয়েছে, আবার চেষ্টা করুন.',
+        confirmButtonColor: 'red',
+        showCancelButton: false
+      })
+    } else {
+      swal.fire({
+        title: "Registration Success!",
+        icon: 'success',
+        text: 'আপনার নিবন্ধন আবেদন গৃহীত হয়েছে. আমরা শীঘ্রই আপনাকে নিশ্চিত করা হবে',
+        confirmButtonColor: 'green',
+        showCancelButton: false
+      }).then((result) => {
+        //SMS 
+        //  sendSMS(mobile.value)
+        //
+        window.location.href = "/"
+      })
+    }
   }
 }
 const clearError = () => {
   authError.value = ''
 }
+
+async function sendSMS(mobile) {
+  let msg = "Your Registration is success for JRAM 100 year program";
+  let APIKEY = "C20076335fef723964a9d7.42340865"
+  let SENDERID = "8809612446650";
+  let url = "https://880sms.com/smsapi?api_key="+APIKEY+"&type=text&contacts="+mobile+"&senderid="+SENDERID+"&msg="+msg
+  await fetch(url);
+}
+
+async function checkUrlExit(mobile) {
+
+  console.log("URL : ", mobile);
+  const { data: user, error } = await client
+    .from('event_registration')
+    .select('*')
+    .eq('phone', mobile)
+    .single()
+  console.log(user);
+  if (user) {
+    return true;
+  } else {
+    return false;
+  }
+  if (error) {
+    return true;
+  }
+}
+
 </script>
 
 <style scoped>
@@ -288,7 +391,9 @@ const clearError = () => {
   object-fit: stretch;
   background-repeat: no-repeat;
 }
-.text-red{
-  color: red;;
+
+.text-red {
+  color: red;
+  ;
 }
 </style>

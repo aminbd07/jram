@@ -1,6 +1,6 @@
 <template>
     <footer class="bg-gradient-to-r from-[#218454] to-[#51a951] ">
-        <div class="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-3 items-center">
+        <div class="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-3 items-center p-8">
             <div class="flex flex-col space-y-4">
                 <h2 class="font-medium text-[40px]">যোগাযোগ</h2>
                 <p>জয়াগ রশিদিয়া আলিম মাদ্রাসা</p>

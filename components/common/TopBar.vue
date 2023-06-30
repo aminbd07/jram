@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white border-gray-200 dark:bg-wihte-900">
-    <div class="container mx-auto ">
+    <div class="container mx-auto p-4">
       <nav class=" ">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between">
           <a href="/" class="flex items-center">
