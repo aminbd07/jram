@@ -526,7 +526,7 @@
                   :key="upazila.id"
                   :value="upazila.id"
                 >
-                  {{ upazila.bn_name }}
+                  {{ upazila.bn_name  }}
                 </option>
               </select>
               <div v-else>No upazilas available for the selected district.</div>
