@@ -1,7 +1,7 @@
 <template>
   <div class="regPage h-[35vh] bg-center"></div>
   <div class="container mx-auto mt-[-180px]">
-    <h2 class="text-white text-xl text-center p-8 text-[36px]">
+    <h2 class="text-white  text-center p-8 text-[48px]">
       রেজিষ্ট্রেশন ফরম
     </h2>
     <div class="form-area bg-white rounded-xl p-8 drop-shadow-md mb-10 md:flex">
@@ -37,6 +37,16 @@
           ইসলামী ব্যাংক বাংলাদেশ লিমিটেড, জয়াগ শাখা। <br />
           (এজেন্ট ব্যাংক)।
         </p>
+
+        <div class="mt-10  text-[24px] ">
+          <hr class="mb-4" />
+
+          <h3>কোন সমস্যা হলে যোগাযোগ করুন:</h3>
+
+          <p> অফিস : <a href="tel:+8801309107397"> +8801309107397 </a> </p>
+          <p>অনলাইন রেজিস্ট্রেশন : <a href="tel:+8801717032813"> +8801717032813 </a> </p>
+          <p>ইমেইল : 100year@xstudentsjram.com</p>
+        </div>
       </div>
       <div class="p-4 md:w-2/3 xs:w-full">
         <form @submit.prevent="signUp">
@@ -259,6 +269,9 @@
                 class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
+          <div class="w-full mt-2">
+            <img :src="cdn + file_name" v-if="file_name" height="120" class="max-h-[120px]" />
+          </div>
           <h4 class="font-semibold mb-3">স্থায়ী ঠিকানা</h4>
 
           <div class="md:flex mb-4">
@@ -346,47 +359,48 @@
           </div>
 
           <h4 class="font-semibold mb-3">বর্তমান ঠিকানা
-            <label class=" text-right ml-6"> <input type="checkbox" v-model="sameAsParmanent"  @click="addressSwitch" /> বর্তমান
+            <label class=" text-right ml-6"> <input type="checkbox" v-model="sameAsParmanent" @click="addressSwitch" />
+              বর্তমান
               এবং স্থায়ী ঠিকানা একই </label>
 
           </h4>
-          <div v-if="!sameAsParmanent"> 
-          <div class="md:flex mb-4">
-            <div class="md:shrink-0 w-1/4">
-              <label class=""> বাড়ির নাম/নাম্বার </label>
-            </div>
-            <div class="w-3/4">
-              <input type="text" v-model="presentHome"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-            </div>
-          </div>
-
-          <div class="">
+          <div v-if="!sameAsParmanent">
             <div class="md:flex mb-4">
-              <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-                <label class=""> গ্রাম </label>
+              <div class="md:shrink-0 w-1/4">
+                <label class=""> বাড়ির নাম/নাম্বার </label>
               </div>
               <div class="w-3/4">
-                <input type="text" v-model="presenVillage"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-              </div>
-              <div class="md:shrink-0 lg:w-1/8 xs:w-full">
-                <label class="p-4">ওয়ার্ড</label>
-              </div>
-              <div class="w-3/4">
-                <input type="text" v-model="presenWord"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+                <input type="text" v-model="presentHome"
+                  class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               </div>
             </div>
-          </div>
 
-          <div class="">
-            <div class="md:flex mb-4">
-              <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-                <label for="district">ইউনিয়ন :</label>
+            <div class="">
+              <div class="md:flex mb-4">
+                <div class="md:shrink-0 lg:w-1/4 xs:w-full">
+                  <label class=""> গ্রাম </label>
+                </div>
+                <div class="w-3/4">
+                  <input type="text" v-model="presenVillage"
+                    class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+                </div>
+                <div class="md:shrink-0 lg:w-1/8 xs:w-full">
+                  <label class="p-4">ওয়ার্ড</label>
+                </div>
+                <div class="w-3/4">
+                  <input type="text" v-model="presenWord"
+                    class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+                </div>
               </div>
-              <div class="w-3/4">
-                <!-- <select v-model="presentDist" @change="updateUpazilas(presentDist, 'present')"
+            </div>
+
+            <div class="">
+              <div class="md:flex mb-4">
+                <div class="md:shrink-0 lg:w-1/4 xs:w-full">
+                  <label for="district">ইউনিয়ন :</label>
+                </div>
+                <div class="w-3/4">
+                  <!-- <select v-model="presentDist" @change="updateUpazilas(presentDist, 'present')"
                   class="block w-full p-2 mb-6 text-md rounded-lg">
                   <option disabled value="">Please select a district</option>
                   <option v-for="district in allPreDistricts" :key="district.id" :value="district.id">
@@ -394,16 +408,16 @@
                   </option>
                 </select> -->
 
-                <input type="text" v-model="presentUnion"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+                  <input type="text" v-model="presentUnion"
+                    class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
 
 
-              </div>
+                </div>
 
-              <div class="md:shrink-0 lg:w-1/8 xs:w-full p-2">
-                <label for="upazila">উপজেলা:</label>
-              </div>
-              <!-- <select v-if="allPreUpazilas.length > 0" v-model="presentUpazila"
+                <div class="md:shrink-0 lg:w-1/8 xs:w-full p-2">
+                  <label for="upazila">উপজেলা:</label>
+                </div>
+                <!-- <select v-if="allPreUpazilas.length > 0" v-model="presentUpazila"
                 @change="updateUnions(presentUpazila, 'present')" class="block w-full p-2 mb-6 text-md rounded-lg">
                 <option disabled value="">Please select an upazila</option>
                 <option v-for="upazila in allPreUpazilas" :key="upazila.id" :value="upazila.id">
@@ -411,18 +425,18 @@
                 </option>
               </select>
               <div v-else>No upazilas available for the selected district.</div> -->
-              <input type="text" v-model="presentUpazila"
-                class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+                <input type="text" v-model="presentUpazila"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
 
+              </div>
             </div>
-          </div>
 
-          <div class="md:flex mb-4">
-            <div class="md:shrink-0 w-1/4">
-              <label for="union">জেলা:</label>
-            </div>
-            <div class="w-3/4">
-              <!-- <select v-model="presentUnion" v-if="presentUpazila && unions.length > 0"
+            <div class="md:flex mb-4">
+              <div class="md:shrink-0 w-1/4">
+                <label for="union">জেলা:</label>
+              </div>
+              <div class="w-3/4">
+                <!-- <select v-model="presentUnion" v-if="presentUpazila && unions.length > 0"
                 class="block w-full p-2 mb-6 text-md rounded-lg">
                 <option disabled value="">Please select a union</option>
                 <option v-for="union in allPreUnions" :key="union.id" :value="union.id">
@@ -432,11 +446,11 @@
               <div v-else>No unions available for the selected upazila.</div> -->
 
 
-              <input type="text" v-model="presentDist"
-                class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+                <input type="text" v-model="presentDist"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
 
+              </div>
             </div>
-          </div>
           </div>
 
           <div class="items-center">
@@ -576,6 +590,7 @@ const loading = ref(false);
 const sameAsParmanent = ref(false);
 const authError = ref("");
 const swal = inject("$swal");
+const cdn = "https://menkacmpmotzifetudpr.supabase.co/storage/v1/object/public/jram/"
 
 
 watchEffect(async () => {
@@ -600,11 +615,11 @@ const calulateTotal = async () => {
 };
 const signUp = async () => {
   let permanentAddress = "Home : " + permanentHome.value + ", Vill : " + permanentVillage.value + ", Word : " + permanentWord.value + ",  Union: " + permanentUnion.value + ", Upazaila :" + permanentUpazila.value + ", Dist : " + permanentDist.value;
-  let presentAddress =  permanentAddress ; 
-  if(!sameAsParmanent.value) { 
-    presentAddress =  "Home : " + presentHome.value + ", Vill : " + presenVillage.value + ", Word : " + presenWord.value + ", Union: " + presentUnion.value + ", Upazaila : " + presentUpazila.value + ", Dist : " + presentDist.value;
+  let presentAddress = permanentAddress;
+  if (!sameAsParmanent.value) {
+    presentAddress = "Home : " + presentHome.value + ", Vill : " + presenVillage.value + ", Word : " + presenWord.value + ", Union: " + presentUnion.value + ", Upazaila : " + presentUpazila.value + ", Dist : " + presentDist.value;
 
-  } 
+  }
 
 
   let validation = [];
@@ -705,7 +720,7 @@ const signUp = async () => {
         .fire({
           title: "Registration Success!",
           icon: "success",
-          text: "আপনার নিবন্ধন আবেদন গৃহীত হয়েছে. শীঘ্রই আপনাকে নিশ্চিত করা হবে",
+          html: "<p> আপনার নিবন্ধন আবেদন গৃহীত হয়েছে. শীঘ্রই আপনাকে নিশ্চিত করা হবে. </p> <p> Name : " + name.value + "  </p> <p> Batch : " + batch.value + "  </p> <p> Mobile: " + mobile.value + " </p> ",
           confirmButtonColor: "green",
           showCancelButton: false,
         })
@@ -721,8 +736,8 @@ const signUp = async () => {
 const clearError = () => {
   authError.value = "";
 };
-const  addressSwitch = () => {
-  if (sameAsParmanent.value ===  true ) {
+const addressSwitch = () => {
+  if (sameAsParmanent.value === true) {
     sameAsParmanent.value = false;
   } else {
     sameAsParmanent.value = true;
