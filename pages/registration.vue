@@ -305,7 +305,7 @@
                 </select> -->
                 <input type="text" v-model="permanentUnion"
                   class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-               
+
               </div>
 
               <div class="md:shrink-0 lg:w-1/8 xs:w-full">
@@ -320,8 +320,8 @@
               </select>
               <div v-else>No upazilas available for the selected district.</div> -->
               <input type="text" v-model="permanentUpazila"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-               
+                class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+
             </div>
           </div>
 
@@ -338,15 +338,19 @@
                 </option>
               </select>
               <div v-else>No unions available for the selected upazila.</div> -->
-             
+
               <input type="text" v-model="permanentDist"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-               
+                class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+
             </div>
           </div>
 
-          <h4 class="font-semibold mb-3">বর্তমান ঠিকানা</h4>
+          <h4 class="font-semibold mb-3">বর্তমান ঠিকানা
+            <label class=" text-right ml-6"> <input type="checkbox" v-model="sameAsParmanent"  @click="addressSwitch" /> বর্তমান
+              এবং স্থায়ী ঠিকানা একই </label>
 
+          </h4>
+          <div v-if="!sameAsParmanent"> 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
               <label class=""> বাড়ির নাম/নাম্বার </label>
@@ -392,7 +396,7 @@
 
                 <input type="text" v-model="presentUnion"
                   class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-               
+
 
               </div>
 
@@ -408,8 +412,8 @@
               </select>
               <div v-else>No upazilas available for the selected district.</div> -->
               <input type="text" v-model="presentUpazila"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-               
+                class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+
             </div>
           </div>
 
@@ -427,11 +431,12 @@
               </select>
               <div v-else>No unions available for the selected upazila.</div> -->
 
-             
-                  <input type="text" v-model="presentDist"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
-               
+
+              <input type="text" v-model="presentDist"
+                class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+
             </div>
+          </div>
           </div>
 
           <div class="items-center">
@@ -568,6 +573,7 @@ const ward = ref("");
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
 const loading = ref(false);
+const sameAsParmanent = ref(false);
 const authError = ref("");
 const swal = inject("$swal");
 
@@ -593,9 +599,14 @@ const calulateTotal = async () => {
   totalPrice.value = total;
 };
 const signUp = async () => {
-  let presentAddress = "Home : "+ presentHome.value + ", Vill : " + presenVillage.value + ", Word : " + presenWord  +", Union: " + presentUnion.value + ", Upazaila : " + presentUpazila.value + ", Dist : " + presentDist.value;
-  let permanentAddress =  "Home : "+ permanentHome.value + ", Vill : " + permanentVillage.value + ", Word : " + permanentWord  + ",  Union: " + permanentUnion.value + ", Upazaila :" + permanentUpazila.value + ", Dist : " + permanentDist.value;
- 
+  let permanentAddress = "Home : " + permanentHome.value + ", Vill : " + permanentVillage.value + ", Word : " + permanentWord.value + ",  Union: " + permanentUnion.value + ", Upazaila :" + permanentUpazila.value + ", Dist : " + permanentDist.value;
+  let presentAddress =  permanentAddress ; 
+  if(!sameAsParmanent.value) { 
+    presentAddress =  "Home : " + presentHome.value + ", Vill : " + presenVillage.value + ", Word : " + presenWord.value + ", Union: " + presentUnion.value + ", Upazaila : " + presentUpazila.value + ", Dist : " + presentDist.value;
+
+  } 
+
+
   let validation = [];
   let vr = false;
   if (!studentType.value) {
@@ -670,8 +681,8 @@ const signUp = async () => {
       tranx_id: transID.value,
       image: file_name.value,
       paid_amount: totalPrice.value,
-      permanent_address : permanentAddress , 
-      present_address : presentAddress , 
+      permanent_address: permanentAddress,
+      present_address: presentAddress,
     };
 
     const { data, error } = await client
@@ -710,7 +721,14 @@ const signUp = async () => {
 const clearError = () => {
   authError.value = "";
 };
+const  addressSwitch = () => {
+  if (sameAsParmanent.value ===  true ) {
+    sameAsParmanent.value = false;
+  } else {
+    sameAsParmanent.value = true;
+  };
 
+}
 async function sendSMS(mobile) {
   let msg = "Your Registration is success for JRAM 100 year program";
   let APIKEY = "C20076335fef723964a9d7.42340865";
@@ -752,7 +770,7 @@ function imageUpdate(event) {
   console.log(r);
   let file_name = "/user/" + r + "_" + file.name;
 
-  let valied = checkFile(file.size, 300, ext);
+  let valied = checkFile(file.size, 5000, ext);
   if (valied && file) {
     let data = {
       act: "profile_image",
