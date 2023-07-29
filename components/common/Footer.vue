@@ -1,7 +1,7 @@
 <template>
     <footer class="bg-gradient-to-r from-[#218454] to-[#51a951] text-white  text-[24px]">
-        <div class="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-3 items-center p-8">
-            <div class="flex flex-col space-y-4">
+        <div class="container grid md:grid-cols-3 mx-auto xs:grid-cols-1  items-center p-8 xs:w-full">
+            <div class="flex flex-col space-y-4 ">
                 <h2 class="font-medium text-[40px]">যোগাযোগ</h2>
                 <p>শতবর্ষ উদযাপন কমিটি</p>
                 <p>জয়াগ রশিদিয়া আলিম মাদ্রাসা</p>
@@ -10,7 +10,7 @@
 
                 </div>
             </div>
-            <div class="flex flex-col space-y-4">
+            <div class="flex flex-col space-y-4 xs:w-full">
 
                 <div class="flex flex-col space-y-2  dark:text-white-400">
                     <p>  <a href="tel:+8801309107397">  +8801309107397 (Office) </a> </p>
