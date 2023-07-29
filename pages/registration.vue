@@ -27,14 +27,15 @@
         </ol>
 
         <p class="mt-4 mb-4">
-          মোবাইল ব্যাংকিং নাম্বার <br />
+          মোবাইল ব্যাংকিং নাম্বার (বিকাশ, নগদ) <br />
           {{ mfsNumber }}
         </p>
 
         <p>
           ব্যাংক একাউন্ট নাম্বার <br />
-          ২৩৬৫ ১২৫৭ ২৩৫৮৯ <br />
-          (অগ্রণী ব্যাংক, জয়াগ শাখা)।
+          2050 7770 21477 9193 <br />
+          ইসলামী ব্যাংক বাংলাদেশ লিমিটেড, জয়াগ শাখা। <br />
+          (এজেন্ট ব্যাংক)।
         </p>
       </div>
       <div class="p-4 md:w-2/3 xs:w-full">
@@ -42,29 +43,16 @@
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
               <label class="">
-                পরিচয়ের ধরন <span class="text-red">*</span></label
-              >
+                পরিচয়ের ধরন <span class="text-red">*</span></label>
             </div>
 
             <div class="w-3/4 xs:w-full">
               <label>
-                <input
-                  type="radio"
-                  v-model="studentType"
-                  value="old"
-                  name="student-type"
-                  @change="updateType"
-                />
+                <input type="radio" v-model="studentType" value="old" name="student-type" @change="updateType" />
                 সাবেক শিক্ষার্থী
               </label>
               <label>
-                <input
-                  type="radio"
-                  v-model="studentType"
-                  value="new"
-                  name="student-type"
-                  @change="updateType"
-                />
+                <input type="radio" v-model="studentType" value="new" name="student-type" @change="updateType" />
                 বর্তমান শিক্ষার্থী
               </label>
             </div>
@@ -75,11 +63,8 @@
               <label class=""> নাম <span class="text-red">*</span> </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="name"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="name"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
@@ -90,11 +75,8 @@
               </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="professions"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="FatherName"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
@@ -104,64 +86,38 @@
                 <label class=""> পেশা ও কর্মস্থল </label>
               </div>
               <div class="w-3/4">
-                <input
-                  type="text"
-                  v-model="professions"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-                />
+                <input type="text" v-model="professions"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               </div>
-              <div class="md:shrink-0 lg:w-1/6 xs:w-full">
+              <!-- <div class="md:shrink-0 lg:w-1/6 xs:w-full">
                 <label class="text-center flex"> শিক্ষাগত যোগ্যতা </label>
-              </div>
-              <div class="w-3/4">
-                <input
-                  type="text"
-                  v-model="qualification"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-                />
-              </div>
+              </div> -->
+              <!-- <div class="w-3/4">
+                <input type="text" v-model="qualification"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+              </div> -->
             </div>
           </div>
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label
-                class=""
-                v-html="studentType == 'old' ? 'দাখিল ব্যাচ' : 'শ্রেণী'"
-              ></label>
+              <label class="" v-html="studentType == 'old' ? 'দাখিল ব্যাচ' : 'শ্রেণী'"></label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="batch"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="batch"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
-          <div class="md:flex mb-4">
-            <div class="md:shrink-0 w-1/4">
-              <label class=""> ঠিকানা </label>
-            </div>
-            <div class="w-3/4">
-              <textarea
-                v-model="address"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              >
-              </textarea>
-            </div>
-          </div>
+
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
               <label class=""> মোবাইল নাম্বার </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="mobile"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="mobile"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
@@ -170,11 +126,8 @@
               <label class=""> ইমেইল</label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="email"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="email"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
@@ -184,27 +137,18 @@
             </div>
             <div class="w-3/4">
               <label>
-                <input
-                  type="radio"
-                  v-model="gender"
-                  value="male"
-                  name="gender"
-                />
+                <input type="radio" v-model="gender" value="male" name="gender" />
                 পুরুষ
               </label>
               <label>
-                <input
-                  type="radio"
-                  v-model="gender"
-                  value="female"
-                  name="gender"
-                />
+                <input type="radio" v-model="gender" value="female" name="gender" />
                 নারী
               </label>
             </div>
           </div>
 
-          <div class="mb-5">
+          <div class="mb-5 bg-yellow-100 rounded-lg p-6 text-[24px] text-red-1000">
+
             <h6>
               <span class="font-semibold">জনপ্রতি টিকেট মূল্য:</span> সাবেক
               শিক্ষার্থী <span class="font-semibold">১,০০০৳, </span> বর্তমান
@@ -224,12 +168,8 @@
               <label class=""> টিকেট সংখ্যা </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="number"
-                v-model="mainTicket"
-                @change="calulateTotal"
-                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="number" v-model="mainTicket" @change="calulateTotal"
+                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               <div>(জনপ্রতি {{ tikcketFee }} টাকা)</div>
             </div>
           </div>
@@ -238,20 +178,13 @@
               <label class=""> ফ্যামিলি টিকেট সংখ্যা </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="number"
-                v-model="familyTicket"
-                @change="calulateTotal"
-                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="number" v-model="familyTicket" @change="calulateTotal"
+                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               <div>(জনপ্রতি 500 টাকা)</div>
             </div>
           </div>
 
-          <div
-            class="bg-red-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
-            v-if="totalPrice"
-          >
+          <div class="bg-red-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000" v-if="totalPrice">
             আপনার টিকিটের মোট মূল্য {{ totalPrice }} টাকা
           </div>
 
@@ -261,24 +194,14 @@
             </div>
             <div class="w-3/4">
               <label>
-                <input
-                  type="radio"
-                  v-model="paymentMethod"
-                  value="bkash"
-                  name="payment-method"
-                />
+                <input type="radio" v-model="paymentMethod" value="bkash" name="payment-method" />
                 বিকাশ
               </label>
               <label>
-                <input
-                  type="radio"
-                  v-model="paymentMethod"
-                  value="nagad"
-                  name="payment-method"
-                />
+                <input type="radio" v-model="paymentMethod" value="nagad" name="payment-method" />
                 নগদ
               </label>
-              <label>
+              <!-- <label>
                 <input
                   type="radio"
                   v-model="paymentMethod"
@@ -286,47 +209,34 @@
                   name="payment-method"
                 />
                 রকেট
-              </label>
+              </label> -->
               <label>
-                <input
-                  type="radio"
-                  v-model="paymentMethod"
-                  value="bank"
-                  name="payment-method"
-                />
+                <input type="radio" v-model="paymentMethod" value="bank" name="payment-method" />
                 ব্যাংক একাউন্ট
               </label>
             </div>
           </div>
 
-          <div
-            class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
-            v-if="paymentMethod && paymentMethod == 'bkash'"
-          >
+          <div class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
+            v-if="paymentMethod && paymentMethod == 'bkash'">
             এই ({{ mfsNumber }}) নম্বর এ বিকাশ করুন, এর পর ট্রান্সেকশন নং তা
             নিচে এন্ট্রি দিন. <br />
             (অন্য নম্বর থেকে করলে রেফারেন্স এ আপনার নাম্বার দিন.)
           </div>
-          <div
-            class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
-            v-if="paymentMethod && paymentMethod == 'nagad'"
-          >
+          <div class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
+            v-if="paymentMethod && paymentMethod == 'nagad'">
             এই ({{ mfsNumber }}) নম্বর এ নগদ করুন, এর পর ট্রান্সেকশন নং তা নিচে
             এন্ট্রি দিন. <br />
             (অন্য নম্বর থেকে করলে রেফারেন্স এ আপনার নাম্বার দিন.)
           </div>
-          <div
-            class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
-            v-if="paymentMethod && paymentMethod == 'roket'"
-          >
+          <div class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
+            v-if="paymentMethod && paymentMethod == 'roket'">
             এই ({{ mfsNumber }}) নম্বর এ রকেট করুন, এর পর ট্রান্সেকশন নং তা নিচে
             এন্ট্রি দিন. <br />
             (অন্য নম্বর থেকে করলে রেফারেন্স এ আপনার নাম্বার দিন.)
           </div>
-          <div
-            class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
-            v-if="paymentMethod && paymentMethod == 'bank'"
-          >
+          <div class="bg-green-100 p-4 m-4 rounded-lg items-center text-center text-[24px] text-red-1000"
+            v-if="paymentMethod && paymentMethod == 'bank'">
             পাশে দেওয়া একাউন্ট এ ডিপোজিট কিংবা ট্রান্সফার করুন. সেটার
             ট্রান্সেকশন নম্বর নিচে দিন.
           </div>
@@ -336,11 +246,8 @@
               <label class="">ট্রানজেকশন নাম্বার </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="transID"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="transID"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
           <div class="md:flex mb-4">
@@ -348,25 +255,19 @@
               <label class=""> ছবি আপলোড দিন</label>
             </div>
             <div class="w-3/4">
-              <input
-                type="file"
-                @change="imageUpdate"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="file" @change="imageUpdate"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
           <h4 class="font-semibold mb-3">স্থায়ী ঠিকানা</h4>
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label class=""> বাড়ির নাম </label>
+              <label class=""> বাড়ির নাম/নাম্বার </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="houseName"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="permanentHome"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
@@ -376,21 +277,15 @@
                 <label class=""> গ্রাম </label>
               </div>
               <div class="w-3/4">
-                <input
-                  type="text"
-                  v-model="village"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-                />
+                <input type="text" v-model="permanentVillage"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               </div>
               <div class="md:shrink-0 lg:w-1/8 xs:w-full">
                 <label class="p-4">ওয়ার্ড</label>
               </div>
               <div class="w-3/4">
-                <input
-                  type="text"
-                  v-model="ward"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-                />
+                <input type="text" v-model="permanentWord"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               </div>
             </div>
           </div>
@@ -398,58 +293,55 @@
           <div class="">
             <div class="md:flex mb-4">
               <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-                <label for="district">জেলা:</label>
+                <label for="district">ইউনিয়ন :</label>
               </div>
               <div class="w-3/4">
-                <select v-model="selectedDistrictId" @change="updateUpazilas">
-                  <option disabled value="">Please select a district</option>
-                  <option
-                    v-for="district in districts"
-                    :key="district.id"
-                    :value="district.id"
-                  >
-                    {{ district.name }}
+                <!-- <select v-model="permanentDist" @change="updateUpazilas(permanentDist, 'permanent')"
+                  class="block w-full p-2 mb-6 text-md rounded-lg">
+                  <option disabled value="" selected>Please select a district</option>
+                  <option v-for="district in districts" :key="district.id" :value="district.bn_name">
+                    {{ district.bn_name }}
                   </option>
-                </select>
+                </select> -->
+                <input type="text" v-model="permanentUnion"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+               
               </div>
 
               <div class="md:shrink-0 lg:w-1/8 xs:w-full">
                 <label for="upazila">উপজেলা:</label>
               </div>
-              <select
-                v-if="upazilas.length > 0"
-                v-model="selectedUpazilaId"
-                @change="updateUnions"
-              >
+              <!-- <select v-if="upazilas.length > 0" v-model="permanentUpazila"
+                @change="updateUnions(permanentUpazila, 'permanent')" class="block w-full p-2 mb-6 text-md rounded-lg">
                 <option disabled value="">Please select an upazila</option>
-                <option
-                  v-for="upazila in upazilas"
-                  :key="upazila.id"
-                  :value="upazila.id"
-                >
-                  {{ upazila.name }}
+                <option v-for="upazila in upazilas" :key="upazila.id" :value="upazila.bn_name">
+                  {{ upazila.bn_name }}
                 </option>
               </select>
-              <div v-else>No upazilas available for the selected district.</div>
+              <div v-else>No upazilas available for the selected district.</div> -->
+              <input type="text" v-model="permanentUpazila"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+               
             </div>
           </div>
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label for="union">ইউনিয়ন:</label>
+              <label for="union">জেলা:</label>
             </div>
             <div class="w-3/4">
-              <select v-if="selectedUpazilaId && unions.length > 0">
-                <option disabled value="">Please select a union</option>
-                <option
-                  v-for="union in unions"
-                  :key="union.id"
-                  :value="union.id"
-                >
-                  {{ union.name }}
+              <!-- <select v-model="permanentUnion" v-if="permanentUpazila && unions.length > 0"
+                class="block w-full p-2 mb-6 text-md rounded-lg">
+                <option value="" selected>Please select a union</option>
+                <option v-for="union in unions" :key="union.id" :value="union.bn_name">
+                  {{ union.bn_name }}
                 </option>
               </select>
-              <div v-else>No unions available for the selected upazila.</div>
+              <div v-else>No unions available for the selected upazila.</div> -->
+             
+              <input type="text" v-model="permanentDist"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+               
             </div>
           </div>
 
@@ -457,14 +349,11 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label class=""> বাড়ির নাম </label>
+              <label class=""> বাড়ির নাম/নাম্বার </label>
             </div>
             <div class="w-3/4">
-              <input
-                type="text"
-                v-model="houseName"
-                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-              />
+              <input type="text" v-model="presentHome"
+                class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
 
@@ -474,21 +363,15 @@
                 <label class=""> গ্রাম </label>
               </div>
               <div class="w-3/4">
-                <input
-                  type="text"
-                  v-model="village"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-                />
+                <input type="text" v-model="presenVillage"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               </div>
               <div class="md:shrink-0 lg:w-1/8 xs:w-full">
                 <label class="p-4">ওয়ার্ড</label>
               </div>
               <div class="w-3/4">
-                <input
-                  type="text"
-                  v-model="ward"
-                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400"
-                />
+                <input type="text" v-model="presenWord"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
               </div>
             </div>
           </div>
@@ -496,69 +379,64 @@
           <div class="">
             <div class="md:flex mb-4">
               <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-                <label for="district">জেলা:</label>
+                <label for="district">ইউনিয়ন :</label>
               </div>
               <div class="w-3/4">
-                <select v-model="selectedDistrictId" @change="updateUpazilas" class="block w-full p-2 mb-6 text-md rounded-lg">
+                <!-- <select v-model="presentDist" @change="updateUpazilas(presentDist, 'present')"
+                  class="block w-full p-2 mb-6 text-md rounded-lg">
                   <option disabled value="">Please select a district</option>
-                  <option
-                    v-for="district in districts"
-                    :key="district.id"
-                    :value="district.id"
-                  >
+                  <option v-for="district in allPreDistricts" :key="district.id" :value="district.id">
                     {{ district.bn_name }}
                   </option>
-                </select>
+                </select> -->
+
+                <input type="text" v-model="presentUnion"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+               
+
               </div>
 
-              <div class="md:shrink-0 lg:w-1/8 xs:w-full pl-2 pr-2">
+              <div class="md:shrink-0 lg:w-1/8 xs:w-full p-2">
                 <label for="upazila">উপজেলা:</label>
               </div>
-              <select
-                v-if="upazilas.length > 0"
-                v-model="selectedUpazilaId"
-                @change="updateUnions"
-                class="block w-full p-2 mb-6 text-md rounded-lg"
-              >
+              <!-- <select v-if="allPreUpazilas.length > 0" v-model="presentUpazila"
+                @change="updateUnions(presentUpazila, 'present')" class="block w-full p-2 mb-6 text-md rounded-lg">
                 <option disabled value="">Please select an upazila</option>
-                <option
-                  v-for="upazila in upazilas"
-                  :key="upazila.id"
-                  :value="upazila.id"
-                >
-                  {{ upazila.bn_name  }}
+                <option v-for="upazila in allPreUpazilas" :key="upazila.id" :value="upazila.id">
+                  {{ upazila.bn_name }}
                 </option>
               </select>
-              <div v-else>No upazilas available for the selected district.</div>
+              <div v-else>No upazilas available for the selected district.</div> -->
+              <input type="text" v-model="presentUpazila"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+               
             </div>
           </div>
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label for="union">ইউনিয়ন:</label>
+              <label for="union">জেলা:</label>
             </div>
             <div class="w-3/4">
-              <select v-if="selectedUpazilaId && unions.length > 0" class="block w-full p-2 mb-6 text-md rounded-lg">
+              <!-- <select v-model="presentUnion" v-if="presentUpazila && unions.length > 0"
+                class="block w-full p-2 mb-6 text-md rounded-lg">
                 <option disabled value="">Please select a union</option>
-                <option
-                  v-for="union in unions"
-                  :key="union.id"
-                  :value="union.id"
-                >
+                <option v-for="union in allPreUnions" :key="union.id" :value="union.id">
                   {{ union.bn_name }}
                 </option>
               </select>
-              <div v-else>No unions available for the selected upazila.</div>
+              <div v-else>No unions available for the selected upazila.</div> -->
+
+             
+                  <input type="text" v-model="presentDist"
+                  class="w-full border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+               
             </div>
           </div>
 
           <div class="items-center">
-            <input
-              type="submit"
-              name="submit"
-              value="রেজিস্ট্রেশন কনফার্ম করুন"
-              class="bg-[#027554] hover:bg-[#027554] text-white font-bold py-2 px-4 rounded"
-            />
+            <input type="submit" name="submit" value="রেজিস্ট্রেশন কনফার্ম করুন"
+              class="bg-[#027554] hover:bg-[#027554] text-white font-bold py-2 px-4 rounded" />
           </div>
         </form>
       </div>
@@ -588,29 +466,74 @@ const upazilas = ref<Upazila[]>([]);
 const districts = ref<District[]>([]);
 const unions = ref<Union[]>([]);
 
+const allPreUpazilas = ref<Upazila[]>([]);
+const allPreDistricts = ref<District[]>([]);
+const allPreUnions = ref<Union[]>([]);
+
+const permanentDist = ref<number | null>(null);
+const permanentUpazila = ref<number | null>(null);
+const permanentUnion = ref<number | null>(null);
+const permanentHome = ref<string | null>(null);
+const permanentVillage = ref<string | null>(null);
+const permanentWord = ref<string | null>(null);
+
+const presentDist = ref<number | null>(null);
+const presentUpazila = ref<number | null>(null);
+const presentUnion = ref<number | null>(null);
+const presentHome = ref<string | null>(null);
+const presenVillage = ref<string | null>(null);
+const presenWord = ref<string | null>(null);
+
+
+
 onMounted(() => {
   // Load the data from JSON files during component mount
   upazilas.value = upazilasData;
   districts.value = districtsData;
   unions.value = unionsData;
+
+  allPreUpazilas.value = upazilasData;
+  allPreDistricts.value = districtsData;
+  allPreUnions.value = unionsData;
 });
 
-const updateUpazilas = () => {
-  if (selectedDistrictId.value === null) {
-    upazilas.value = [];
+const updateUpazilas = (distID, ct) => {
+  if (ct == 'permanent') {
+    if (distID === null) {
+      upazilas.value = [];
+    } else {
+      upazilas.value = upazilasData.filter(
+        (upazila) => upazila.district_id === distID
+      );
+    }
   } else {
-    upazilas.value = upazilasData.filter(
-      (upazila) => upazila.district_id === selectedDistrictId.value
-    );
+    if (distID === null) {
+      allPreUpazilas.value = [];
+    } else {
+      allPreUpazilas.value = upazilasData.filter(
+        (upazila) => upazila.district_id === distID
+      );
+    }
   }
 };
-const updateUnions = () => {
-  if (selectedUpazilaId.value === null) {
-    unions.value = [];
+const updateUnions = (uzilaID, ct) => {
+  if (ct == 'permanent') {
+    if (uzilaID === null) {
+      unions.value = [];
+    } else {
+      unions.value = unionsData.filter(
+        (union) => union.upazilla_id === uzilaID
+      );
+    }
   } else {
-    unions.value = unionsData.filter(
-      (union) => union.upazilla_id === selectedUpazilaId.value
-    );
+    if (uzilaID === null) {
+      allPreUnions.value = [];
+    } else {
+      allPreUnions.value = unionsData.filter(
+        (union) => union.upazilla_id === uzilaID
+      );
+    }
+
   }
 };
 
@@ -636,7 +559,7 @@ const familyTicket = ref(0);
 const paymentMethod = ref("");
 const transID = ref("");
 const BankInfo = ref("");
-const mfsNumber = ref("01710000000");
+const mfsNumber = ref("01717149282");
 const tikcketFee = ref(1000);
 const totalPrice = ref(0);
 const houseName = ref("");
@@ -647,6 +570,7 @@ const user = useSupabaseUser();
 const loading = ref(false);
 const authError = ref("");
 const swal = inject("$swal");
+
 
 watchEffect(async () => {
   if (user.value) {
@@ -669,6 +593,9 @@ const calulateTotal = async () => {
   totalPrice.value = total;
 };
 const signUp = async () => {
+  let presentAddress = "Home : "+ presentHome.value + ", Vill : " + presenVillage.value + ", Word : " + presenWord  +", Union: " + presentUnion.value + ", Upazaila : " + presentUpazila.value + ", Dist : " + presentDist.value;
+  let permanentAddress =  "Home : "+ permanentHome.value + ", Vill : " + permanentVillage.value + ", Word : " + permanentWord  + ",  Union: " + permanentUnion.value + ", Upazaila :" + permanentUpazila.value + ", Dist : " + permanentDist.value;
+ 
   let validation = [];
   let vr = false;
   if (!studentType.value) {
@@ -683,10 +610,10 @@ const signUp = async () => {
     validation.push(" দাখিল ব্যাচ দিন");
     vr = true;
   }
-  if (!address.value) {
-    validation.push(" ঠিকানা দিন");
-    vr = true;
-  }
+  // if (!address.value) {
+  //   validation.push(" ঠিকানা দিন");
+  //   vr = true;
+  // }
   if (!mobile.value) {
     validation.push(" মোবাইল নাম্বার দিন");
     vr = true;
@@ -730,9 +657,8 @@ const signUp = async () => {
     let saveData = {
       student_type: studentType.value,
       name: name.value,
-      FatherName: FatherName.value,
+      father_name: FatherName.value,
       professions: professions.value,
-      qualification: qualification.value,
       batch: batch.value,
       address: address.value,
       phone: mobile.value,
@@ -744,9 +670,8 @@ const signUp = async () => {
       tranx_id: transID.value,
       image: file_name.value,
       paid_amount: totalPrice.value,
-      houseName: houseName.value,
-      village: village.value,
-      ward: ward.value,
+      permanent_address : permanentAddress , 
+      present_address : presentAddress , 
     };
 
     const { data, error } = await client
