@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  nitro: {
+    prerender: {
+      crawlLinks: true
+    }
+  },
   css: [
     '@/assets/css/app.css',
   ],
