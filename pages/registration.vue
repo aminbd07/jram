@@ -260,6 +260,34 @@
                 class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
             </div>
           </div>
+
+          <div class="md:flex mb-4">
+            <div class="md:shrink-0 lg:w-1/4 xs:w-full">
+              <label class="">টি-শার্ট সাইজ</label>
+            </div>
+            <div class="w-3/4">
+              <template v-for=" (person, i) in tShirtSize ">
+                <div class="md:shrink-0 lg:w-1/4 xs:w-full">
+              <label class=""> Person {{ i+1 }}</label>
+            </div>
+                <input type="text" v-model="tShirtSize[i].name" placeholder="Person Name"
+                class="border-2 border-gray-200 rounded w-2/4 py-2 px-4 text-gray-700 leading-tight focus:outline-none bg-[#f3f3f3] focus:border-gray-400" />
+
+                <select v-model="tShirtSize[i].size" name="tsirt_size"  class=" w-2/4  p-2 mb-6 text-md rounded-lg">
+                  <option value=""> Select a size</option>
+                  <option value="S"> S </option>
+                  <option value="M"> M </option>
+                  <option value="L"> L </option>
+                  <option value="XL"> XL </option>
+                  <option value="XXL"> XXL </option>
+                </select>
+              </template>
+
+
+            </div>
+
+          </div>
+
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
               <label class=""> ছবি আপলোড দিন</label>
@@ -479,6 +507,12 @@ interface District {
   name: string;
 }
 
+interface tss {
+  id: number;
+  size: string;
+  name: string;
+}
+
 const selectedDistrictId = ref<number | null>(null);
 const selectedUpazilaId = ref<number | null>(null);
 const upazilas = ref<Upazila[]>([]);
@@ -488,6 +522,7 @@ const unions = ref<Union[]>([]);
 const allPreUpazilas = ref<Upazila[]>([]);
 const allPreDistricts = ref<District[]>([]);
 const allPreUnions = ref<Union[]>([]);
+const tShirtSize = ref<tss[]>([]);
 
 const permanentDist = ref<number | null>(null);
 const permanentUpazila = ref<number | null>(null);
@@ -612,6 +647,22 @@ const calulateTotal = async () => {
   let ftp = 500;
   let total = ptp * mainTicket.value + ftp * familyTicket.value;
   totalPrice.value = total;
+  let  totalPerson = mainTicket.value + familyTicket.value ;
+  let sizeArray = [] ; 
+  console.log("Total : ",totalPerson) ; 
+  for ( let i = 0 ; i < totalPerson; i++){
+    let ar:tss  = {
+      id: i, 
+      size : '', 
+      name : '', 
+    }
+    sizeArray.push (ar)  ; 
+  }
+
+  tShirtSize.value = sizeArray; 
+
+ 
+  console.log("TShirt", tShirtSize) ;
 };
 const signUp = async () => {
   let permanentAddress = "Home : " + permanentHome.value + ", Vill : " + permanentVillage.value + ", Word : " + permanentWord.value + ",  Union: " + permanentUnion.value + ", Upazaila :" + permanentUpazila.value + ", Dist : " + permanentDist.value;
@@ -698,6 +749,7 @@ const signUp = async () => {
       paid_amount: totalPrice.value,
       permanent_address: permanentAddress,
       present_address: presentAddress,
+      t_shirt: tShirtSize.value 
     };
 
     const { data, error } = await client
