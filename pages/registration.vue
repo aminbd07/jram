@@ -595,7 +595,7 @@ definePageMeta({
   layout: "default",
 });
 useHead({
-  title: "Register | supaAuth",
+  title: "Register | JRAM 100 Year",
 });
 const studentType = ref("");
 const name = ref("");
@@ -629,9 +629,9 @@ const cdn = "https://menkacmpmotzifetudpr.supabase.co/storage/v1/object/public/j
 
 
 watchEffect(async () => {
-  if (user.value) {
-    await navigateTo("/");
-  }
+  // if (user.value) {
+  //   await navigateTo("/");
+  // }
 });
 
 const updateType = async () => {

@@ -2,23 +2,12 @@
   <div class="regPage h-[35vh] bg-center"></div>
   <div class="container mx-auto mt-[-180px]">
     <h2 class="text-white text-xl text-center p-8 text-[36px]">
-      রেজিষ্ট্রেশন ফরম
+      Back admin 
     </h2>
     <div class="form-area bg-white rounded-xl p-8 drop-shadow-md mb-10 md:flex">
       <div class="mb-32 text-center">
-
-        <div class="lg:gap-xl-12 grid gap-x-6 md:grid-cols-2 lg:grid-cols-4">
-
-          <div class="mb-12 lg:mb-0 border p-2" v-for=" (attendy, index) in AllAttendy" :key="index">
-             <img class="mx-auto mb-6 rounded-lg shadow-lg dark:shadow-black/20 w-[150px] min-h-[80px]"
-              :src="cdn+attendy.image" :alt="attendy.name" />
-            <h5 class="mb-2 text-lg font-bold"> {{ attendy.name }} </h5>
-            <p class="mb-2">Batch : {{ attendy.batch }}</p>
-          </div>
-
-
+       
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -33,10 +22,10 @@ onMounted(() => {
 
 
 definePageMeta({
-  layout: "default",
+  layout: "admin",
 });
 useHead({
-  title: "All Attendy | JRAM 100 Year",
+  title: "Back Office management | JRAM 100 Year",
 });
 
 
@@ -48,8 +37,11 @@ const swal = inject("$swal");
 const cdn = "https://menkacmpmotzifetudpr.supabase.co/storage/v1/object/public/jram/"
 
 watchEffect(async () => {
-});
+  if (!user.value) {
+    await navigateTo('/login')
+  }
 
+});
 
 //
 let { data: AllAttendy, error } = await client

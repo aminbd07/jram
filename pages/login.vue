@@ -3,7 +3,7 @@
     <div class="max-w-md w-full space-y-8">
       <div>
         <h2 class="text-center text-3xl font-extrabold text-gray-900">
-          Sign in to your account
+         Login 
         </h2>
         
       </div>
@@ -26,11 +26,7 @@
 
         <div class="flex items-center justify-between">
           <div class="flex items-center">
-            <input id="remember_me" name="remember_me" type="checkbox"
-              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-            <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-              Remember me
-            </label>
+            
           </div>
 
           <div class="text-sm">
@@ -47,10 +43,7 @@
               submit </span>
           </button>
         </div>
-
-        <div class="font-medium text-indigo-600 hover:text-indigo-500 text-center">
-          Not have a account?  <a href="/register">Signup</a>
-        </div>
+ 
       </form>
     </div>
 
@@ -60,10 +53,10 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "default"
+  layout: "mobile"
 })
 useHead({
-  title: 'Login | supaAuth'
+  title: 'Login | JRAM'
 })
 const user = useSupabaseUser()
 const loading = ref(false)
@@ -74,7 +67,7 @@ const client = useSupabaseAuthClient()
 const swal = inject("$swal");
 watchEffect(async () => {
   if (user.value) {
-    await navigateTo('/')
+    await navigateTo('/backoffice')
   }
 });
 
