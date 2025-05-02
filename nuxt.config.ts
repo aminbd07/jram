@@ -1,3 +1,4 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   nitro: {
     prerender: {
@@ -14,27 +15,6 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@pinia/nuxt'
   ],
-  buildModules: [
-  ],
- 
-  image: {
-    presets: {
-      avatar: {
-        modifiers: {
-          format: 'jpg',
-          width: 50,
-          height: 50
-        }
-      },
-      cover: {
-        modifiers: {
-          fit: "contain",
-          format: "jpg",
-          height: 300,
-        },
-      },
-    }
-  },
   plugins: [
     // { src: "~/plugins/sweetalert2.ts", mode: "client" },
     // { src: "~/plugins/draggable.ts", mode: "client" }
