@@ -2,13 +2,7 @@
     <div class="container mx-auto">
         <div class="text-center">
             <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-10 m-10">
-                <div>
-                    <img class=" object-cover " 
-                        src="~/assets/images/01.png" alt="">
-                        <p class="caption ">
-                            শতবর্ষ উদ্যাপনের জন্য প্রস্তুতিমূলক সভা
-                        </p>
-                </div>
+               
                 <div>
                     <img class="object-cover "
                     src="~/assets/images/03.png"  alt="">

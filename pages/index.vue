@@ -3,7 +3,7 @@
     <HomeHeroSection />
     <!-- <HomeCommity />  -->
     <HomeHistory /> 
-    <HomeBani /> 
+   <!--  <HomeBani />  -->
     <HomeGallary /> 
   </div>
 </template>
