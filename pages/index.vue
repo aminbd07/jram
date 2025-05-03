@@ -5,7 +5,7 @@
     <HomeHistory /> 
    <!--  <HomeBani />  -->
     <HomeGallary /> 
-  </div>
+  </div> 
 </template>
 
 <script setup lang="ts">

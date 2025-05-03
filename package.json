@@ -1,4 +1,8 @@
 {
+  "name" : "jrm",
+  "version" : "1.0.0",
+  "description" : "JRM is a Nuxt 3 project that provides a platform for users to create and share their own QR codes. It offers a user-friendly interface, customizable QR code designs, and various sharing options.",
+  "author" : "JRM",
   "private": true,
   "scripts": {
     "build": "nuxt build",

@@ -17,7 +17,7 @@
                             শতবর্ষ উদযাপনকে কেন্দ্র করে ২০১৯ সালে আয়োজিত ঈদ পুণর্মিলনী অনুষ্ঠান
                         </p>
                 </div>
-               
+                
                 <div>
                     <img class="object-cover  "
                     src="~/assets/images/04.png"  alt="">
