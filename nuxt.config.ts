@@ -1,5 +1,8 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  name: "jram",
   nitro: {
+     preset: 'node-server', 
     prerender: {
       crawlLinks: true
     }
@@ -14,27 +17,6 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@pinia/nuxt'
   ],
-  buildModules: [
-  ],
- 
-  image: {
-    presets: {
-      avatar: {
-        modifiers: {
-          format: 'jpg',
-          width: 50,
-          height: 50
-        }
-      },
-      cover: {
-        modifiers: {
-          fit: "contain",
-          format: "jpg",
-          height: 300,
-        },
-      },
-    }
-  },
   plugins: [
     // { src: "~/plugins/sweetalert2.ts", mode: "client" },
     // { src: "~/plugins/draggable.ts", mode: "client" }
@@ -50,12 +32,14 @@ export default defineNuxtConfig({
     cssPath: '~/assets/css/tailwind.postcss'
   },
   app: {
+    name: "JRAM",
     layoutTransition: { name: 'layout', mode: 'out-in' },
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
+      title: "JRAM",
       charset: 'utf-16',
       viewport: 'width=500, initial-scale=1',
-      link: [
+      link: [ 
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com' },

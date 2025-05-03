@@ -102,7 +102,8 @@ const activeStudent = ref([]);
 const userTransID = ref("");
 const swal = inject("$swal");
 const showPopup = ref(false)
-const cdn = "https://menkacmpmotzifetudpr.supabase.co/storage/v1/object/public/jram/"
+const cdn = "https://xtehmhyjkwwxxzcrruwq.supabase.co/storage/v1/object/public/jram/"
+
 
 watchEffect(async () => {
     if (!user.value) {
