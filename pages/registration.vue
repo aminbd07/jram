@@ -111,7 +111,7 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 w-1/4">
-              <label class="" v-html="studentType == 'old' ? 'দাখিল ব্যাচ' : 'শ্রেণী'"></label>
+              <label class="" v-html="studentType == 'old' ? `দাখিল ব্যাচ <span class='text-red'>*</span> ` : `শ্রেণী <span class='text-red'>*</span>`"></label>
             </div>
             <div class="w-3/4">
               <input type="text" v-model="batch"
@@ -123,7 +123,7 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-              <label class=""> মোবাইল নাম্বার </label>
+              <label class=""> মোবাইল নাম্বার <span class="text-red">*</span></label>
             </div>
             <div class="w-3/4">
               <input type="text" v-model="mobile"
@@ -175,7 +175,7 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-              <label class=""> টিকেট সংখ্যা </label>
+              <label class=""> টিকেট সংখ্যা <span class='text-red'>*</span> </label>
             </div>
             <div class="w-3/4">
               <input type="number" v-model="mainTicket" @change="calulateTotal"
@@ -200,7 +200,7 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-              <label class=""> টাকা দেওয়ার মাধ্যম</label>
+              <label class=""> টাকা দেওয়ার মাধ্যম <span class='text-red'>*</span></label>
             </div>
             <div class="w-3/4">
               <label>
@@ -253,7 +253,7 @@
 
           <div class="md:flex mb-4">
             <div class="md:shrink-0 lg:w-1/4 xs:w-full">
-              <label class="">ট্রানজেকশন নাম্বার </label>
+              <label class="">ট্রানজেকশন নাম্বার  <span class='text-red'>*</span></label>
             </div>
             <div class="w-3/4">
               <input type="text" v-model="transID"
@@ -677,6 +677,10 @@ const signUp = async () => {
   let vr = false;
   if (!studentType.value) {
     validation.push(" পরিচয়ের ধরন দিন");
+    vr = true;
+  }
+  if(!file_name.value){
+    validation.push(" আপনার একটি ফটো উপলোড করুন। ");
     vr = true;
   }
   if (!name.value) {
